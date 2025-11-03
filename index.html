@@ -105,11 +105,15 @@
     .meta{ color: var(--muted); font-size:.9rem; }
     .project .links{ display:flex; gap:.6rem; margin-top:auto; }
     .project .links a{ padding:.35rem .55rem; border-radius:.5rem; outline: 1px solid color-mix(in oklab, var(--text) 18%, transparent); }
+    /* .techStackChips{margin-top:.5rem;display:flex;flex-wrap:wrap;gap:.4rem;}*/
+    .techLine{margin:.4rem 0 0;color:var(--muted);font-size:.9rem;}
 
     /* Experience */
     .timeline{ display:grid; gap: .8rem; }
     .item{ display:grid; gap:.25rem; padding:.8rem; border-left: 3px solid var(--brand); background: color-mix(in oklab, var(--card) 75%, transparent); border-radius:.5rem; }
     .item .when{ color: var(--muted); font-size:.9rem; }
+    .item .techStack{color:var(--muted);font-size:.9rem;margin:.2rem 0;}
+    .item .details{ white-space:pre-line;text-align:justify; }
 
     /* Contact */
     .contact{ display:grid; grid-template-columns: 1.2fr .8fr; gap:1rem; align-items:stretch; grid-auto-rows: 1fr; }
@@ -134,8 +138,8 @@
       <nav aria-label="Primary">
         <a href="#top" class="brand" style="font-weight:800; letter-spacing:.2px;">SS<span style="color:var(--brand)">•</span>Portfolio</a>
         <div class="nav-links" role="menubar">
-          <a role="menuitem" href="#projects">Projects</a>
           <a role="menuitem" href="#experience">Experience</a>
+          <a role="menuitem" href="#projects">Projects</a>
           <a role="menuitem" href="#skills">Skills</a>
           <a role="menuitem" href="#contact">Contact</a>
         </div>
@@ -187,6 +191,12 @@
       </div>
     </section>
 
+    <!-- EXPERIENCE -->
+    <section id="experience" aria-label="Experience">
+      <h2 class="section-title">Experience</h2>
+      <div class="timeline" id="timeline"></div>
+    </section>
+
     <!-- PROJECTS -->
     <section id="projects" aria-label="Projects">
       <h2 class="section-title">Projects</h2>
@@ -198,12 +208,6 @@
       </div>
       <div class="grid" id="projectGrid" aria-live="polite"></div>
       <!-- <p class="meta" style="margin-top:.5rem;">Click a project to view the repo or live demo.</p> -->
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" aria-label="Experience">
-      <h2 class="section-title">Experience</h2>
-      <div class="timeline" id="timeline"></div>
     </section>
 
     <!-- ABOUT / CONTACT -->
@@ -264,8 +268,9 @@
     const projects = [
     {
         title: 'Delhi Air Pulse – AQI Monitoring (Serverless)',
-        blurb: 'End-to-end AWS pipeline (Lambda, DynamoDB, API Gateway, SNS, Cognito) + React dashboard; hourly AQI predictions with +90% alert accuracy and 25% lower latency.',
+        blurb: 'End-to-end AWS serverless pipeline + React dashboard; hourly AQI predictions with +90% alert accuracy and 25% lower latency.',
         tags: ['cloud','ml','web','data'],
+        techStack: 'AWS Lambda | API Gateway | DynamoDB | SNS | Cognito | CloudWatch | Node.js | Python | React | Amplify | Event-driven architecture',
         imageText: 'Serverless AQI',
         links: {
         demo: 'https://dev.d3bao62ejuz1tv.amplifyapp.com/',
@@ -274,8 +279,9 @@
     },
     {
         title: 'Wine Quality Prediction (SL/SSL/USL)',
-        blurb: 'ETL + supervised/semi-supervised/unsupervised pipeline; Random Forest hit 73.14% F1. Used SMOTE, PCA, and GridSearchCV; self-training RF +9.92% on balanced data.',
+        blurb: 'Built and evaluated supervised, semi-supervised, and unsupervised pipelines for wine-quality prediction. Engineered balanced datasets to mitigate skew and multicollinearity, and benchmarked 7+ models (Random Forest, Decision Tree, K-Means, GMM) to identify hyperparameter trends improving classification accuracy and interpretability.',
         tags: ['ml'],
+        techStack: 'Scikit-learn | Pandas | NumPy | Random Forest | Decision Trees | K-Means | GMM | Semi-Supervised Learning | Model Interpretability',
         imageText: 'ML Pipeline',
         links: {
         demo: null,
@@ -284,8 +290,9 @@
     },
     {
         title: 'Hybrid Movie Recommender',
-        blurb: 'Python + PyTorch + FastAPI + FAISS + React; hybrid retrieval (semantic + CF) with scalable vector search.',
+        blurb: 'Developed a hybrid recommender combining collaborative and content-based learning with PyTorch + FAISS, cutting retrieval latency by 35%. Deployed FastAPI backend and React frontend for real-time movie discovery, plus an iOS ARKit layer that turns posters into interactive video previews, boosting user engagement by 40%.',
         tags: ['ml','web','recsys'],
+        techStack: 'PyTorch · FastAPI · FAISS · React.js · Swift · ARKit · Collaborative + Content-based Filtering · Deep Learning · Real-time Inference',
         imageText: 'Recsys',
         links: {
         demo: 'https://hybrid-rec-5th7.onrender.com',
@@ -307,19 +314,22 @@
             role: 'Data Science Software Engineer',
             org: 'Easley Dunn Productions, Inc.',
             when: 'Aug 2025 – Present',
-            details: 'Lead predictive analytics for a mobile game, building ML models to balance in-game economy systems and forecast player behavior using Python and React.'
+            techStack: 'Python (NumPy | Pandas | Matplotlib) | Machine Learning (Random Forest | ARIMA) | React | Plotly Dash | Unity | Looker Studio | AWS CloudWatch | Custom Scripts for Automation',
+            details: 'At Easley Dunn Productions, I led predictive analytics initiatives for Robot Race: Extreme Racing, a large-scale mobile game. I built Python-based simulation pipelines to test and tune reward systems, improving balance and fairness before release. \n I also developed ARIMA and Random Forest forecasting models to predict player progression and in-game spending patterns, helping the design team fine-tune XP curves and retention incentives. \n Finally, I created React and Plotly dashboards for real-time visualization of key metrics, enabling continuous monitoring and adjustment of live game systems — now deployed across App Store and Google Play.'
         },
         {
-            role: 'Data Science Intern',
+            role: 'Machine Learning Intern',
             org: 'WorkUp',
             when: 'May 2024 – Jul 2024',
-            details: 'Built an AI-driven data scraping and job recommendation pipeline using Python, MongoDB, and TF-IDF, improving matching accuracy and data integrity.'
+            techStack: 'Python (Selenium | BeautifulSoup | TF-IDF | Collaborative Filtering) | MongoDB | AWS SageMaker | NVIDIA Merlin | Data-pipeline orchestration & validation automation',
+            details: 'At WorkUp, I focused on building scalable data and recommendation systems for job-matching automation. \n I implemented MongoDB data-validation pipelines to ensure integrity and reduce query errors, then developed an AI-driven scraping engine using Python, Selenium, and BeautifulSoup to structure information from unformatted job questionnaires. \n To personalize the experience, I built and deployed a real-time recommendation system on AWS SageMaker using NVIDIA Merlin’s Two-Tower model, enabling continuous job-to-candidate matching with significantly improved accuracy and reduced latency.'
         },
         {
-            role: 'Data Science Intern',
+            role: 'Software Engineer Intern',
             org: 'Kanini Software Solutions',
             when: 'Feb 2023 – Jul 2023',
-            details: 'Developed a modular Loan Products web app with React, Node.js, and C#, streamlining banking workflows and reducing processing time by 40%.'
+            techStack: 'React | Node.js | C# | REST API | CRUD Architecture | Responsive Design | Modular Dashboard Development',
+            details: 'At Kanini Software Solutions, I worked as a Software Engineer Intern developing scalable fintech applications. \nI designed and deployed a loan-management web application using React, Node.js, and C#, focusing on responsive UI design and cross-browser compatibility to improve the user experience for financial customers. \n I also co-led the creation of a modular dashboard integrating data across deposits, loans, credit cards, and life-insurance products. By implementing robust CRUD operations and REST APIs, we streamlined banking workflows and reduced internal processing time by 40%.'
         }
 
     ];
@@ -338,7 +348,9 @@
           <div>
             <h3>${p.title}</h3>
             <p class="meta">${p.blurb}</p>
+            <p class="meta techLine"><span class="label">Tech:</span> ${p.techStack}</p>
             <div class="chips">${p.tags.map(t => `<span class='chip'>${t}</span>`).join('')}</div>
+    </div>
           </div>
           <div class="links">
             ${p.links?.demo ? `<a href="${p.links.demo}" target="_blank" rel="noopener">Live</a>` : ''}
@@ -367,7 +379,7 @@
     experience.forEach(e => {
       const el = document.createElement('div');
       el.className = 'item';
-      el.innerHTML = `<strong>${e.role}</strong> · ${e.org}<div class="when">${e.when}</div><div>${e.details}</div>`;
+      el.innerHTML = `<strong>${e.role}</strong> · ${e.org}<div class="when">${e.when}</div><div class="techStack">${e.techStack} </div><div class="details">${e.details}</div>`;
       timeline.appendChild(el);
     });
   </script>
