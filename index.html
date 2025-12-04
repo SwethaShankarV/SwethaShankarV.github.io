@@ -82,7 +82,8 @@
     .hero h1{ font-size: clamp(1.8rem, 4vw, 3rem); line-height:1.15; margin:.2rem 0 .6rem; }
     .kicker{ color: var(--muted); font-weight:600; letter-spacing:.08em; text-transform:uppercase; font-size:.85rem; }
     .hero p{ color: var(--muted); }
-    .avatar{ width: 160px; aspect-ratio:1; border-radius: 1.25rem; background: linear-gradient(180deg, color-mix(in oklab,var(--brand) 35%, transparent), color-mix(in oklab,var(--brand-2) 35%, transparent)); display:grid; place-items:center; font-size:3rem; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+    .avatar{ width: 160px; aspect-ratio:1; border-radius: 1.25rem; overflow: hidden; background: linear-gradient(180deg, color-mix(in oklab,var(--brand) 35%, transparent), color-mix(in oklab,var(--brand-2) 35%, transparent)); box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+    .avatar img{ width: 100%; height:100%; object-fit: cover; display: block;}
     .hero-actions{ display:flex; gap:.8rem; flex-wrap: wrap; margin-top: 1rem; }
 
     /* Sections */
@@ -166,7 +167,9 @@
         </div>
       </div>
       <div style="display:grid; place-items:center;">
-        <div class="avatar" aria-hidden="true">👋</div>
+        <div class="avatar">
+          <img src="GradPic3.png" alt="Portrait of Swetha Shankar" />
+        </div>
         <p class="meta" style="text-align:center; margin-top:.6rem;">Open to Relocation · Open to Remote</p>
       </div>
     </section>
